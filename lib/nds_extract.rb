@@ -1,3 +1,4 @@
+require 'pry'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require_relative './directors_database'
 
@@ -25,19 +26,44 @@ def gross_for_director(d)
 end
 
 def list_of_directors(source)
-  # Write this implementation
+director_index = 0
+list = []
+ 
+ while director_index < source.length do
+  list << source[director_index][:name]
+  director_index += 1
+ end
+list
 end
 
 def total_gross(source)
+  total = 0
+  director_index = 0
+ 
+  while director_index < source.length do
+    
+    #//#sleepytag: this isn't right. you're treating total like a hash when it needs to return an integer instead of a hash. use the list_of_directors to pull the directors_totals and then add them up (total +=) and return total#//#
+    
+    director_name = list_of_directors(source[director_index])
+    
+    gross = directors_totals(source[director_index])
+    total += director_name[gross]
+    
+    director_index += 1
+  end
+  total
+end
+  
+  
+  ##OKAY: go in for each director's total gross and add it to total. return total at the end of the method. they want you to use directors_totals and list_of_directors as first order methods.
+
+
   # Write this implementation
   #
   # Should use methods:
   # 1. directors_totals: returns a Hash of { dir_name => gross }
-  # 2. list_of_directors: names provides an Array of directors names (use
-  #
-  # Visit each key (i.e. director name), look up the value in the hash
-  # returned by directors_totals, and add it to a running total. When done,
-  # return the total
-end
+  # 2. list_of_directors: names provides an Array of directors names (use //???????? use whaT??//
+  # Visit each key (i.e. director name), look up the value in the hash returned by directors_totals, and add it to a running total. When done, return the total //gross???//
+
 
 

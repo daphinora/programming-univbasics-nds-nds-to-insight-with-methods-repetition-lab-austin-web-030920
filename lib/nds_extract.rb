@@ -41,14 +41,10 @@ def total_gross(source)
   director_index = 0
  
   while director_index < source.length do
-    
-    #//#sleepytag: this isn't right. you're treating total like a hash when it needs to return an integer instead of a hash. use the list_of_directors to pull the directors_totals and then add them up (total +=) and return total#//#
-    
     director_name = list_of_directors(source[director_index])
-    
     gross = directors_totals(source[director_index])
-    total += director_name[gross]
     
+    total += director_name[gross]
     director_index += 1
   end
   total
